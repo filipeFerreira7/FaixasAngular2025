@@ -11,10 +11,12 @@ import { MatCardModule } from '@angular/material/card';
 import { Estado } from '../../../models/estado.model';
 
 
+
+
 @Component({
   selector: 'app-estado-form',
   standalone: true,
-  imports: [ NgIf, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatToolbarModule,RouterModule ],
+  imports: [ NgIf, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatToolbarModule,RouterModule],
   templateUrl: './estado-form.component.html',
   styleUrl: './estado-form.component.css'
 })
