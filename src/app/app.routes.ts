@@ -10,8 +10,8 @@ import { cidadeResolver } from './components/estado/cidade.resolver';
 export const routes: Routes = [
     {path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
     {path: 'estados/new', component: EstadoFormComponent, title: 'Novo Estado'},
-    {path: 'estados/edit/:id', component: EstadoFormComponent, title: 'Edição de Estado', resolve: {estadoResolver}},
+    {path: 'estados/edit/:id', component: EstadoFormComponent, title: 'Edição de Estado', resolve: {estado: estadoResolver}},
     {path: 'cidades', component: CidadeListComponent, title:'Lista de Cidades',},
     {path:'cidades/new', component:CidadeFormComponent, title:'Nova Cidade'},
-    {path: 'cidades/edit/:id', component:CidadeFormComponent, title: 'Edição de Cidade', resolve: {cidadeResolver}},    
+    {path: 'cidades/edit/:id', component:CidadeFormComponent, title: 'Edição de Cidade', resolve: {cidade: cidadeResolver}},    
 ];

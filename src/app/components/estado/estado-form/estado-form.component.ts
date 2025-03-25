@@ -70,8 +70,8 @@ export class EstadoFormComponent {
             next: () => {
               this.router.navigateByUrl('/estados');
             },
-            error: (err) => {
-              console.log('Erro ao excluir' + JSON.stringify(err))
+            error: (errorResponse) => {
+              console.log('Erro ao excluir' + JSON.stringify(errorResponse))
             }
           })
         }

@@ -24,21 +24,21 @@
             </form>
         </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button 
-            color="primary" 
-            (click)="salvar()" 
-            [disabled]="formGroup.invalid">
-            Salvar
-        </button>
+    <button mat-raised-button routerLink="/estados/">
+        Cancelar
+    </button>
         <button mat-raised-button
-            color="warn"
-            (click)="excluir()"
-            [disabled]="formGroup.invalid">
-            Excluir
+        color="warn"
+        (click)="excluir()"
+        [disabled]="formGroup.invalid">
+        Excluir 
         </button>
-        <button mat-raised-button routerLink="/estados/">
-            Cancelar
-        </button>
-    </mat-card-actions>
+    <button mat-raised-button 
+        color="primary" 
+        (click)="salvar()" 
+        [disabled]="formGroup.invalid">
+        Salvar
+    </button>
+</mat-card-actions>
     </mat-card>
 </div>

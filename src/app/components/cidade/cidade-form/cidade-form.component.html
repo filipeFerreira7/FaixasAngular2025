@@ -29,7 +29,7 @@
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="salvar()" [disabled]="formGroup.invalid">
+            <button mat-raised-button routerlink="/cidades/" color="primary" (click)="salvar()" [disabled]="formGroup.invalid">
                 Salvar
             </button>
             <button mat-raised-button color="warn" (click)="excluir()" [disabled]="formGroup.invalid">

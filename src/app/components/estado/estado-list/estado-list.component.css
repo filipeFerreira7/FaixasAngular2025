@@ -1,38 +1,125 @@
-.toolbar-tittle{
-    flex: 1;
-    text-align: center;
-}
-
-.flex-container{
+.example-form {
     display: flex;
     align-items: center;
+    margin-left: 20px; /* Ajuste a margem conforme necessário */
+  }
+  
+ /* Estilo do campo de entrada da pesquisa */
+.example-input {
     width: 100%;
-}
-
-.demo-table{
-    width: 100;
-}
-
-.mat-column-id{
+    height: 40px; /* Ajuste a altura conforme necessário */
+    border-radius: 20px; /* Bordas arredondadas */
+    padding: 0 15px; /* Espaçamento interno */
+    border: 2px solid #ccc; /* Cor da borda */
+    transition: all 0.3s ease-in-out; /* Transição suave para a animação */
+  }
+  
+  /* Efeito de hover para aumentar a barra de pesquisa */
+  .example-input:hover {
+    border-color: #3f51b5; /* Muda a cor da borda */
+    box-shadow: 0 4px 8px rgba(63, 81, 181, 0.3); /* Adiciona uma sombra suave */
+    transform: scale(1.05); /* Aumenta levemente a barra de pesquisa */
+  }
+  
+  /* Foco na barra de pesquisa */
+  .example-input:focus {
+    border-color: #3f51b5; /* Cor da borda quando em foco */
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 4px 8px rgba(63, 81, 181, 0.3); /* Adiciona sombra ao focar */
+  }
+  
+  /* Efeito de animação suave */
+  .example-form .mat-autocomplete-panel {
+    background: white;
+    color: black;
+    transition: opacity 0.3s ease-in-out; /* Transição suave na abertura do autocomplete */
+  }
+  
+  .example-input:focus + .mat-autocomplete-panel {
+    opacity: 1; /* Torna o painel visível quando o input está focado */
+  }
+  
+  .accent {
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: #3f51b5; /* Cor de fundo azul (ajuste conforme necessidade) */
+    color: white; /* Cor do texto (ícone) */
+    border-radius: 50%; /* Tornando o botão completamente arredondado */
+    padding: 16px; /* Espaçamento interno para aumentar o tamanho do botão */
+    transition: background-color 0.3s, transform 0.2s; /* Efeito suave para a mudança de cor e animação */
+    border: none; /* Remover borda padrão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .accent:hover {
+    background-color: #5c6bc0; /* Cor de fundo quando o botão é hover */
+    transform: scale(1.1); /* Efeito de zoom quando o botão é pressionado */
+  }
+  
+  .accent:focus {
+    outline: none; /* Remove a borda padrão de foco */
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.4); /* Adiciona um efeito de foco */
+  }
+  
+  .mat-autocomplete-panel {
+    background: white;
+    color: black;
+  }
+  
+  .toolbar-title {
+    flex: 3;
+    text-align: center;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens da toolbar */
+    align-items: center;
+    width: 100%;
+  }
+  
+  .demo-table {
+    width: 100%;
+  }
+  
+  .mat-column-id {
     width: 5em;
     border-right: 1px solid currentColor;
-    padding-right:  24px;
+    padding-right: 24px;
     text-align: center;
-}
-
-.mat-column-nome{
+  }
+  
+  .mat-column-nome {
     width: 100%;
-}
-
-.mat-column-sigla{
-
+  }
+  
+  .mat-column-sigla {
     width: 5em;
     text-align: center;
   }
-
-.mat-column-acao{
+  
+  .mat-column-acao {
     width: 20em;
     text-align: center;
-}
-
-
+  }
+  
+  /* Ajustes para o layout da toolbar */
+  mat-toolbar {
+    display: flex;
+    justify-content: space-between; /* Isso ajuda a distribuir os itens dentro da toolbar */
+    align-items: center;
+  }
+  
+  mat-toolbar .example-form {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  mat-toolbar .toolbar-title {
+    flex: 2;
+    text-align: center;
+  }
+  

@@ -12,20 +12,34 @@ export class EstadoService {
   constructor(private httpClient: HttpClient) { 
   }
 
+  findAll(page?:number, pageSize?:number): Observable<Estado[]> {
+    let params = {};
+    if(page !== undefined && pageSize !== undefined){
+      params = {
+        page: page.toString(),
+        pageSize: pageSize.toString()
+      }
+    }
+    return this.httpClient.get<Estado[]>(this.baseUrl, {params});
+  }
+
+  count(): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/count`);
+  }
+    findById(id: string): Observable<Estado>{
+      return this.httpClient.get<Estado>(`${this.baseUrl}/${id}`);
+    }
+  
+  findByNome(nome: string): Observable<Estado>{
+    return this.httpClient.get<Estado>(`${this.baseUrl}/${nome}`);
+  }
+
   getEstados(): Observable<Estado[]> {
     return this.httpClient.get<Estado[]>(this.baseUrl);
   }
 
   salvar(estado:Estado): Observable<Estado>{
     return this.httpClient.post<Estado>(this.baseUrl, estado);
-  }
-
-  findAll(): Observable<Estado[]>{
-    return this.httpClient.get<Estado[]>(this.baseUrl);
-  }
-
-  findById(id: string): Observable<Estado>{
-    return this.httpClient.get<Estado>(`${this.baseUrl}/${id}`);
   }
 
   update(estado:Estado): Observable<Estado>{
