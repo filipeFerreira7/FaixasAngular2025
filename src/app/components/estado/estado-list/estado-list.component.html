@@ -47,7 +47,7 @@
       >
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" style="color: red">
+      <button mat-icon-button color="warn" style="color: red" (click)="excluir(element)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -64,4 +64,5 @@
   (page)="paginar($event)"
   aria-label="Select page"
 >
+
 </mat-paginator>

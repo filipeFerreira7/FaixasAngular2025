@@ -61,20 +61,4 @@ export class EstadoFormComponent {
         }
       }
     }
-
-    excluir(){
-      if (this.formGroup.valid){
-        const estado = this.formGroup.value;
-        if (estado.id != null) {
-          this.estadoService.delete(estado).subscribe({
-            next: () => {
-              this.router.navigateByUrl('/estados');
-            },
-            error: (errorResponse) => {
-              console.log('Erro ao excluir' + JSON.stringify(errorResponse))
-            }
-          })
-        }
-      }
-    }
 }

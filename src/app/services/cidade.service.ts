@@ -26,6 +26,10 @@ export class CidadeService {
       return this.httpClient.get<number>(`${this.baseUrl}/count`);
     }
 
+    countFiltrados(): Observable<number> {
+      return this.httpClient.get<number>(`${this.baseUrl}/countFilter`);
+    }
+
   getCidades(): Observable<Cidade[]> {
     return this.httpClient.get<Cidade[]>(this.baseUrl);
   }

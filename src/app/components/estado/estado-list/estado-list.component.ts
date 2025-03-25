@@ -8,17 +8,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink,Router } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginatorModule, MatPaginatorIntl} from '@angular/material/paginator';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { startWith,map } from 'rxjs/operators';
 import { AsyncPipe } from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Observable,of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialog } from '../../delete-dialog/delete-dialog.component';
+import { PtBrMatPaginator } from '../../../internationalization/PtBrMatPaginator';
+
 @Component({
   selector: 'app-estado-list',
   imports: [NgFor,RouterLink,MatIconModule,MatToolbarModule,MatButtonModule,MatTableModule,MatPaginatorModule,
     AsyncPipe,FormsModule,ReactiveFormsModule,MatAutocompleteModule
   ],
+  providers: [{ provide: MatPaginatorIntl, useClass: PtBrMatPaginator}],
   templateUrl: './estado-list.component.html',
   styleUrl: './estado-list.component.css'
 })
@@ -27,6 +32,7 @@ export class EstadoListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'sigla','acao'];
   estadosOriginais: Estado[] = []; // Lista completa dos estados
   estadosFiltrados: Estado[] = []; // Estados exibidos na tabela
+ 
 
 
   //variaveis de controle de paginacao
@@ -34,7 +40,7 @@ export class EstadoListComponent implements OnInit {
     pageSize = 30;
     page = 0;
 
-  constructor(private estadoService: EstadoService) {}
+  constructor(private estadoService: EstadoService, private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     // Buscar todos os estados do banco de dados
@@ -48,10 +54,16 @@ export class EstadoListComponent implements OnInit {
       this.totalRecords = data;
     });
 
-    // Observa mudanças no input de busca
     this.control.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || ''))
+      map(value => {
+        const safeValue = value ?? ''; // Garante que o valor nunca seja null
+        const filtered = this._filter(safeValue);
+        this.estadoService.countFiltrados(safeValue).subscribe(data => {
+          this.totalRecords = data;
+        });
+        return filtered;
+      })
     ).subscribe(filtered => {
       this.estadosFiltrados = filtered;
     });
@@ -60,6 +72,7 @@ export class EstadoListComponent implements OnInit {
   // Função de filtro
   private _filter(value: string): Estado[] {
     const filterValue = this._normalizeValue(value);
+
     return this.estadosOriginais.filter(estado =>
       this._normalizeValue(estado.nome).includes(filterValue)
     );
@@ -80,5 +93,24 @@ export class EstadoListComponent implements OnInit {
     .toLowerCase() // Converte para minúsculas
     .trim(); // Remove espaços extras
 }
+
+excluir(estado: Estado): void {
+    const dialogRef = this.dialog.open(DeleteDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.estadoService.delete(estado).subscribe({
+          next: () => {
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/estados/']); // Navega de volta para a lista
+            });
+          },
+          error: (err) => {
+            console.error('Erro ao tentar excluir o estado', err);
+          }
+        });
+      }
+    });
+  }
 
 }

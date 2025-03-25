@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Irreversível!</h1>
+<mat-icon class="icon">
+  warning
+</mat-icon>
+        <div mat-dialog-content  class="message">Tem certeza que deseja realizar a exclusão?</div>
+        <div mat-dialog-actions>
+          <button mat-button class="cancel" (click)="onCancel()">Cancelar</button>
+          <button mat-button class="confirm" (click)="onConfirm()">Excluir</button>
+        </div>

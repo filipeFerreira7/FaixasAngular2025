@@ -1,0 +1,70 @@
+h1{
+    padding: 10%;
+    color:#a50000;
+    text-align: center;
+}
+
+.message{
+    padding: 10%;
+    text-align: center;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Ajuste para espaçamento */
+    width: 100%; 
+}
+
+.confirm {
+    background-color: rgb(243, 183, 183); /* Cor verde */
+    color: #a50000; /* Cor do texto */
+    border: #a50000;
+    
+    padding: 20px 50px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer; /* Mostra o cursor de clique */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: all 0.3s ease; /* Animações suaves */
+}
+
+.confirm:hover {
+    color: white;
+    background-color: #a50000; /* Cor mais escura no hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+   /* transform: scale(1.05);  Aumenta ligeiramente o tamanho */
+}
+
+.cancel {
+    background-color: rgba(190, 253, 184, 0.801); /* Cor verde */
+    color: green; /* Cor do texto */
+    border: #a50000;
+    
+    padding: 20px 50px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer; /* Mostra o cursor de clique */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: all 0.3s ease; /* Animações suaves */
+}
+
+.cancel:hover {
+    color: white;
+    background-color: green; /* Cor mais escura no hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+   /* transform: scale(1.05);  Aumenta ligeiramente o tamanho */
+}
+
+.icon{
+    color: #a50000; /* Cor vermelha */
+    font-size: 48px; /* Aumenta o tamanho do ícone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto; /* Centraliza o ícone horizontalmente */
+    height: 56px;
+    width: 56px; /* Caso seja necessário */
+
+}

@@ -26,6 +26,12 @@ export class EstadoService {
   count(): Observable<number> {
     return this.httpClient.get<number>(`${this.baseUrl}/count`);
   }
+
+  countFiltrados(nome: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/countFilter`, {
+      params: { nome }
+    });
+  }
     findById(id: string): Observable<Estado>{
       return this.httpClient.get<Estado>(`${this.baseUrl}/${id}`);
     }
