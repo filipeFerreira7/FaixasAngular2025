@@ -37,17 +37,17 @@ export class EstadoListComponent implements OnInit {
 
   //variaveis de controle de paginacao
     totalRecords = 0;
-    pageSize = 30;
+    pageSize = 5;
     page = 0;
 
   constructor(private estadoService: EstadoService, private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
-    // Buscar todos os estados do banco de dados
     this.estadoService.findAll(this.page, this.pageSize).subscribe(data => {
-      this.estadosOriginais = data || []; // Mantém os estados completos
+      this.estadosOriginais = data.results || []; // Acesse os estados corretamente
       this.estadosFiltrados = [...this.estadosOriginais]; // Inicialmente, mostra todos
     });
+    
 
     // Verifica o total de registros
     this.estadoService.count().subscribe(data => {

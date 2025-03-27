@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Estado } from '../models/estado.model';
+import { Paginator } from '../models/paginator';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,16 @@ export class EstadoService {
   constructor(private httpClient: HttpClient) { 
   }
 
-  findAll(page?:number, pageSize?:number): Observable<Estado[]> {
+  findAll(page?:number, pageSize?:number): Observable<Paginator<Estado>> {
     let params = {};
+
     if(page !== undefined && pageSize !== undefined){
       params = {
         page: page.toString(),
         pageSize: pageSize.toString()
       }
     }
-    return this.httpClient.get<Estado[]>(this.baseUrl, {params});
+    return this.httpClient.get<Paginator<Estado>>(this.baseUrl, {params});
   }
 
   count(): Observable<number> {
