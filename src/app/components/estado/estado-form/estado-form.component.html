@@ -9,7 +9,13 @@
                     <mat-error *ngIf="formGroup.get('nome') && 
                             formGroup.get('nome')?.invalid && 
                             formGroup.get('nome')?.touched">
-                    O nome é obrigatório.
+                      {{getErrorMessage('nome',formGroup.get('nome')?.errors)}}
+
+                    @if(formGroup.get('nome')?.hasError('apiError')){
+                        <span> {{formGroup.get('nome')?.getError('apiError')}}</span>
+                    }
+
+
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="full-width-input">
@@ -18,7 +24,7 @@
                     <mat-error *ngIf="formGroup.get('sigla') && 
                             formGroup.get('sigla')?.invalid && 
                             formGroup.get('sigla')?.touched">
-                    A sigla é obrigatória.
+                  {{getErrorMessage('sigla',formGroup.get('sigla')?.errors)}}
                     </mat-error>
                 </mat-form-field>
             </form>
@@ -26,8 +32,7 @@
     <mat-card-actions>
         <button mat-raised-button 
         color="primary" 
-        (click)="salvar()" 
-        [disabled]="formGroup.invalid">
+        (click)="salvar()">
         Salvar
     </button>
     <button mat-raised-button routerLink="/estados/">
