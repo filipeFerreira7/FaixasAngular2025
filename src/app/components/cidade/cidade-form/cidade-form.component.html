@@ -8,8 +8,15 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Nome</mat-label>
                     <input matInput type="text" formControlName="nome">
-                    <mat-error *ngIf="formGroup.get('nome')?.invalid && formGroup.get('nome')?.touched">
-                        O nome é obrigatório.
+                    <mat-error *ngIf="formGroup.get('nome') &&
+                                 formGroup.get('nome')?.invalid && 
+                                 formGroup.get('nome')?.touched">
+                                  {{getErrorMessage('nome',formGroup.get('nome')?.errors)}}
+
+                                @if(formGroup.get('nome')?.hasError('apiError')){
+                                    <span> {{formGroup.get('nome')?.getError('apiError')}} </span>
+                                }
+
                     </mat-error>
                 </mat-form-field>
 
@@ -17,7 +24,7 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Estado</mat-label>
                     <mat-select formControlName="estado">
-                        <mat-option *ngFor="let estado of estados" [value]="estado">
+                        <mat-option *ngFor="let estado of (estados)" [value]="estado">
                             {{ estado.nome }} ({{ estado.sigla }})
                         </mat-option>
                     </mat-select>
@@ -31,9 +38,6 @@
         <mat-card-actions>
             <button mat-raised-button routerlink="/cidades/" color="primary" (click)="salvar()" [disabled]="formGroup.invalid">
                 Salvar
-            </button>
-            <button mat-raised-button color="warn" (click)="excluir()" [disabled]="formGroup.invalid">
-                Excluir
             </button>
             <button mat-raised-button routerLink="/cidades/">Cancelar</button>
         </mat-card-actions>

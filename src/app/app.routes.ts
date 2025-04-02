@@ -5,6 +5,7 @@ import { estadoResolver } from './components/estado/estado.resolver';
 import { CidadeListComponent } from './components/cidade/cidade-list/cidade-list.component';
 import { CidadeFormComponent } from './components/cidade/cidade-form/cidade-form.component';
 import { cidadeResolver } from './components/estado/cidade.resolver';
+import { RoteadorListComponent } from './components/roteador/roteador-list/roteador-list.component';
 
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'estados/edit/:id', component: EstadoFormComponent, title: 'Edição de Estado', resolve: {estado: estadoResolver}},
     {path: 'cidades', component: CidadeListComponent, title:'Lista de Cidades',},
     {path:'cidades/new', component:CidadeFormComponent, title:'Nova Cidade'},
-    {path: 'cidades/edit/:id', component:CidadeFormComponent, title: 'Edição de Cidade', resolve: {cidade: cidadeResolver}}
+    {path: 'cidades/edit/:id', component:CidadeFormComponent, title: 'Edição de Cidade', resolve: {cidade: cidadeResolver}},
+    {path: 'roteadores', component: RoteadorListComponent, title: 'Lista de roteadores'}
 ];
